@@ -1,5 +1,5 @@
 "use strict";
-import ArticleList from "./ArticleList.js";
+import ArticleList from "./../ArticleList.js";
 import React from "react";
 
 const MainView = props => {

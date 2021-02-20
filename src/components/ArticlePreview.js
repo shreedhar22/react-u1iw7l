@@ -32,3 +32,5 @@ const ArticlePreview = props => {
     </div>
   );
 };
+
+export default ArticlePreview;
