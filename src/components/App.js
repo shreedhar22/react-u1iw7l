@@ -3,30 +3,24 @@ import { render } from "react-dom";
 import ".././style.css";
 import { connect } from "react-redux";
 import Header from "./Header.js";
+import MainView from "./MainView.js";
 
 const mapStateToProps = state => ({
-  appName: state.appName
+  appName: state.appName,
+  articles: state.articles
 });
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Header appName={this.props.appName} />
+        <Header app_name={this.props.appName} />
         <p> This is your Magic Blog </p>
+        <MainView articles={this.props.articles} />
       </div>
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div>
-//       <h1>Hello StackBlitz!</h1>
-//       <p>Start editing to see some magic happen :)</p>
-//     </div>
-//   );
-// }
 
 export default connect(
   mapStateToProps,
