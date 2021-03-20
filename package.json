@@ -5,8 +5,10 @@
   "dependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-redux": "^7.2.2",
-    "redux": "4.0.5"
+    "react-redux": "7.2.2",
+    "redux": "4.0.5",
+    "superagent": "6.1.0",
+    "superagent-promise": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
