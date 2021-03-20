@@ -1,16 +1,14 @@
-"use strict";
-
+import Banner from "./Banner";
+import MainView from "./MainView";
 import React from "react";
-import MainView from "./MainView.js";
-import Banner from "./Banner.js";
 import agent from "../../agent";
 import { connect } from "react-redux";
 
-const mapStateToProps = state => {
-  return {
-    appName: state.appName
-  };
-};
+const Promise = global.Promise;
+
+const mapStateToProps = state => ({
+  appName: state.appName
+});
 
 const mapDispatchToProps = dispatch => ({
   onLoad: payload => dispatch({ type: "HOME_PAGE_LOADED", payload })
@@ -18,14 +16,25 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount() {
-    this.props.onLoad(agent.Articles.all);
+    this.props.onLoad(agent.Articles.all());
   }
 
   render() {
     return (
-      <div>
-        <MainView />
+      <div className="home-page">
         <Banner appName={this.props.appName} />
+
+        <div className="container page">
+          <div className="row">
+            <MainView />
+
+            <div className="col-md-3">
+              <div className="sidebar">
+                <p>Popular Tags</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
