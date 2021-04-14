@@ -4,10 +4,9 @@ import ".././style.css";
 import { connect } from "react-redux";
 import Header from "./Header.js";
 import Home from "./Home";
-import Login from "./Login";
 
 const mapStateToProps = state => ({
-  appName: state.appName
+  appName: state.common.appName
 });
 
 class App extends React.Component {
@@ -15,9 +14,7 @@ class App extends React.Component {
     return (
       <div>
         <Header appName={this.props.appName} />
-        <p> This is your Magic Blog </p>
-        <Login />
-        <Home />
+        {this.props.children}
       </div>
     );
   }
