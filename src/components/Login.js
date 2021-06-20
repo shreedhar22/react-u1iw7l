@@ -1,47 +1,67 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-const mapStateToProps = props => ({});
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = props => ({
+  onChangeEmail: dispatch => {},
+
+  onChangePassword: dispatch => {},
+
+  onSubmit: (email, password) => dispatch => {}
+});
 
 class Login extends React.Component {
+  constructor() {
+    this.changeEmail = event => this.props.onChangeEmail();
+
+    this.changePassword = event => this.props.onChangePassword();
+
+    this.submitForm = event => this.props.onSubmit(email, password);
+  }
+
   render() {
+    const { email, password } = this.props;
     return (
-      <div className="text-xs-center">
-        <ul>
-          <div className="nav-item">
-            <a> Username </a>
-            <div>
-              <input
-                type="string"
-                id="username"
-                onChange={this.handleUsername}
-                placeholder="Username"
-              />
+      <form onSubmit={this.submitForm(email, password)}>
+        <div className="text-xs-center">
+          <ul>
+            <div className="nav-item">
+              <a> Username </a>
+              <div>
+                <input
+                  type="string"
+                  id="Email"
+                  value="Email"
+                  onChange={this.changeEmail}
+                  placeholder="Username"
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="nav-item">
-            <a> Password </a>
-            <div>
-              <input
-                type="string"
-                id="password"
-                onChange={this.handlePass}
-                placeholder="Password"
-              />
+            <div className="nav-item">
+              <a> Password </a>
+              <div>
+                <input
+                  type="string"
+                  id="password"
+                  onChange={this.onChangePassword}
+                  placeholder="Password"
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <button> Login </button>
-          </div>
-        </ul>
-      </div>
+            <div>
+              <button> Login </button>
+            </div>
+          </ul>
+        </div>
+      </form>
     );
   }
 }
 
 export default connect(
-  () => ({}),
-  () => ({})
+  mapStateToProps,
+  mapDispatcchToProps
 )(Login);
