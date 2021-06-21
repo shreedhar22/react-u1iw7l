@@ -4,20 +4,26 @@ import { connect } from 'react-redux';
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = props => ({
-  onChangeEmail: dispatch => {},
+  onChangeEmail: value =>
+    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),
 
-  onChangePassword: dispatch => {},
+  onChangePassword: value =>
+    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'password', value }),
 
-  onSubmit: (email, password) => dispatch => {}
+  onSubmit: (email, password) => value =>
+    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) })
 });
 
 class Login extends React.Component {
   constructor() {
-    this.changeEmail = event => this.props.onChangeEmail();
+    this.changeEmail = event => this.props.onChangeEmail(event.target.value);
 
-    this.changePassword = event => this.props.onChangePassword();
+    this.changePassword = event => this.props.onChangePassword(event.target.value);
 
-    this.submitForm = event => this.props.onSubmit(email, password);
+    this.submitForm = (email,password) => event => {
+      event.preventDefault();
+      this.props.onSubmit(email, password);
+    }
   }
 
   render() {
@@ -52,7 +58,12 @@ class Login extends React.Component {
             </div>
 
             <div>
-              <button> Login </button>
+              <button
+                className="btn btn-lg btn-primary pull-xs-right"
+                type="submit"
+              >
+                Sign In
+              </button>
             </div>
           </ul>
         </div>
