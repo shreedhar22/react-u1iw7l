@@ -18,12 +18,13 @@ class Login extends React.Component {
   constructor() {
     this.changeEmail = event => this.props.onChangeEmail(event.target.value);
 
-    this.changePassword = event => this.props.onChangePassword(event.target.value);
+    this.changePassword = event =>
+      this.props.onChangePassword(event.target.value);
 
-    this.submitForm = (email,password) => event => {
+    this.submitForm = (email, password) => event => {
       event.preventDefault();
       this.props.onSubmit(email, password);
-    }
+    };
   }
 
   render() {
@@ -74,5 +75,5 @@ class Login extends React.Component {
 
 export default connect(
   mapStateToProps,
-  mapDispatcchToProps
+  mapDispatchToProps
 )(Login);
