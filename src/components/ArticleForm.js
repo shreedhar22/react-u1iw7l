@@ -13,7 +13,7 @@ const mapDispatchToProps = props => ({
     dispatch ({type: 'UPDATE_ARTICLE_FIELDS', key: 'description', value}),
 
   onSubmitForm: (title, description) => value => 
-    dispatch ({type: "CREATE_ARTICLE", payload: agent.auth.createArticle(title, description)})
+    dispatch ({type: "CREATE_ARTICLE", payload: agent.Articles.createArticle(title, description)})
 })
 
 class ArticleForm extends React.Component {
