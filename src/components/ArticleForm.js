@@ -52,4 +52,4 @@ class ArticleForm extends React.Component {
   }
 }
 
-export default ArticleForm;
+export default connect(mapDispatchToProps, mapStateToProps) (ArticleForm);
