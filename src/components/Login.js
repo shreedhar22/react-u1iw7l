@@ -51,7 +51,7 @@ class Login extends React.Component {
                           type="string"
                           id="Email"
                           value={email}
-                          onChange={this.onChangeEmail}
+                          onChange={this.changeEmail}
                           placeholder="Username"
                         />
                       </div>
@@ -64,7 +64,7 @@ class Login extends React.Component {
                           type="string"
                           id="password"
                           value={password}
-                          onChange={this.onChangePassword}
+                          onChange={this.changePassword}
                           placeholder="Password"
                         />
                       </div>
