@@ -1,15 +1,13 @@
 import React from 'react';
+import agent from '../agent';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({});
-
+const mapStateToProps = state => ({ ...state.auth });
 const mapDispatchToProps = props => ({
   onChangeEmail: value =>
     dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),
-
   onChangePassword: value =>
     dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'password', value }),
-
   onSubmit: (email, password) => value =>
     dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) })
 });
@@ -40,8 +38,7 @@ class Login extends React.Component {
                 <input
                   type="string"
                   id="Email"
-                  value="Email"
-                  onChange={this.changeEmail}
+                  onChange={this.onChangeEmail}
                   placeholder="Username"
                 />
               </div>
