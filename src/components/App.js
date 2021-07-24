@@ -1,15 +1,24 @@
-import React from "react";
-import { render } from "react-dom";
-import ".././style.css";
-import { connect } from "react-redux";
-import Header from "./Header.js";
-import Home from "./Home";
+import React from 'react';
+import '.././style.css';
+import { connect } from 'react-redux';
+import Header from './Header.js';
 
 const mapStateToProps = state => ({
-  appName: state.common.appName
+  appName: state.common.appName,
+  redirectTo: state.common.redirectTo
+});
+
+const mapDispatchToProps = dispatch => ({
+  onRedirect: () => dispatch({ type: 'REDIRECT' })
 });
 
 class App extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.redirectTo) {
+      this.context.router.replace(nextProps.redirectTo);
+      this.props.onRedirect();
+    }
+  }
   render() {
     return (
       <div>
@@ -22,5 +31,5 @@ class App extends React.Component {
 
 export default connect(
   mapStateToProps,
-  () => ({})
+  mapDispatchToProps
 )(App);
