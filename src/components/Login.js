@@ -4,7 +4,7 @@ import ListErrors from './ListErrors';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({ ...state.auth });
-const mapDispatchToProps = props => ({
+const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
     dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),
   onChangePassword: value =>
