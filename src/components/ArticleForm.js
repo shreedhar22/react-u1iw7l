@@ -1,4 +1,5 @@
 import React from "react"
+import agent from "../agent"
 import { connect } from "react-redux"
 
 // create foprm page for creating posts, editing and deleting posts
