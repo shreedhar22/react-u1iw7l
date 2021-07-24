@@ -42,45 +42,35 @@ class Login extends React.Component {
               <ListErrors errors={this.props.errors} />
 
               <form onSubmit={this.submitForm(email, password)}>
-                <div className="text-xs-center">
-                  <ul>
-                    <div className="nav-item">
-                      <a> Username </a>
-                      <div>
-                        <input
-                          type="string"
-                          id="Email"
-                          value={email}
-                          onChange={this.changeEmail}
-                          placeholder="Username"
-                        />
-                      </div>
-                    </div>
+                <fieldset>
+                  <fieldset className="form-group">
+                    <input
+                      className="form-control form-control-lg"
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={this.changeEmail}
+                    />
+                  </fieldset>
 
-                    <div className="nav-item">
-                      <a> Password </a>
-                      <div>
-                        <input
-                          type="string"
-                          id="password"
-                          value={password}
-                          onChange={this.changePassword}
-                          placeholder="Password"
-                        />
-                      </div>
-                    </div>
+                  <fieldset className="form-group">
+                    <input
+                      className="form-control form-control-lg"
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={this.changePassword}
+                    />
+                  </fieldset>
 
-                    <div>
-                      <button
-                        className="btn btn-lg btn-primary pull-xs-right"
-                        type="submit"
-                        disabled={this.props.inProgress}
-                      >
-                        Sign In
-                      </button>
-                    </div>
-                  </ul>
-                </div>
+                  <button
+                    className="btn btn-lg btn-primary pull-xs-right"
+                    type="submit"
+                    disabled={this.props.inProgress}
+                  >
+                    Sign in
+                  </button>
+                </fieldset>
               </form>
             </div>
           </div>

@@ -16,14 +16,14 @@ const requests = {
 };
 
 const Articles = {
-  all: page => requests.get(`/articles?limit=10`),
+  all: page => requests.get('/articles?limit=10'),
   createArticle: (title, description) =>
-    requests.post(`/articles/create`, { article: { title, description } })
+    requests.post('/articles/create', { article: { title, description } })
 };
 
 const Auth = {
   login: (email, password) =>
-    requests.post(`/users/login`, { user: { email, password } })
+    requests.post('/users/login', { user: { email, password } })
 };
 export default {
   Articles,
