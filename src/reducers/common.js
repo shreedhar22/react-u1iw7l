@@ -5,16 +5,16 @@ const defaultState = {
 const common = (state = defaultState, action) => {
   // actions to store a session of the user logged in
 
-  switch (action.type) {
-    case 'APP_LOAD':
-      return {};
+  // switch (action.type) {
+  //   case 'APP_LOAD':
+  //     return {};
 
-    case 'REDIRECT':
-      return {};
+  //   case 'REDIRECT':
+  //     return {};
 
-    case 'LOGIN':
-      return {};
-  }
+  //   case 'LOGIN':
+  //     return {};
+  // }
   return state;
 };
 
