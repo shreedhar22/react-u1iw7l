@@ -4,6 +4,9 @@ import ListErrors from './ListErrors';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({ ...state.auth });
+
+// actions(onSubmit, onChangeEmail/Pass) are dispatched to props to store them in auth
+// reducer
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
     dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),

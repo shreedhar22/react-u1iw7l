@@ -12,7 +12,7 @@ const common = (state = defaultState, action) => {
         ...state,
         token: action.token || null,
         appLoaded: true,
-        currentUser: action.payload ? actionpayload.user : null
+        currentUser: action.payload ? action.payload.user : null
       };
 
     case 'REDIRECT':
