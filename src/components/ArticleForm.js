@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 // create foprm page for creating posts, editing and deleting posts
 
 const mapStateToProps = state => ({}) 
-const mapDispatchToProps = props => ({
+const mapDispatchToProps = dispatch => ({
 
   onChangeTitle:  value => 
     dispatch ({type: 'UPDATE_ARTICLE_FIELDS', key: 'title', value}),
