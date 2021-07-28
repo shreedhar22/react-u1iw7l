@@ -2,6 +2,7 @@ import React from 'react';
 import '.././style.css';
 import { connect } from 'react-redux';
 import Header from './Header.js';
+import agent from '../agent.js';
 
 // states(appName, currentUser and redirectTo(where)) are
 // fetched from the common reducer to attach to props
