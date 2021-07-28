@@ -29,5 +29,8 @@ const Auth = {
 
 export default {
   Articles,
-  Auth
+  Auth,
+  setToken: _token => {
+    token = _token;
+  }
 };

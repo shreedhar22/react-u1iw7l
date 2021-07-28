@@ -1,4 +1,5 @@
 'use strict';
+import agent from './agent.js';
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
