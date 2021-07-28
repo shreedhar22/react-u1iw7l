@@ -2,6 +2,7 @@ import React from 'react';
 import agent from '../agent';
 import ListErrors from './ListErrors';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -72,6 +73,12 @@ class Login extends React.Component {
                     disabled={this.props.inProgress}
                   >
                     Sign in
+                  </button>
+                  <br />
+                  <br />
+                  <br />
+                  <button className="btn btn-lg btn-primary pull-xs-right">
+                    Register
                   </button>
                 </fieldset>
               </form>
