@@ -77,9 +77,11 @@ class Login extends React.Component {
                   <br />
                   <br />
                   <br />
-                  <button className="btn btn-lg btn-primary pull-xs-right">
-                    Register
-                  </button>
+                  <Link to="register">
+                    <button className="btn btn-lg btn-primary pull-xs-right">
+                      Register
+                    </button>
+                  </Link>
                 </fieldset>
               </form>
             </div>
