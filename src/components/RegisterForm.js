@@ -1,7 +1,19 @@
 import React from 'react';
 
 class RegisterForm extends React.Component {
+  constructor() {
+    super();
+
+    this.submitForm = event => {};
+
+    this.changeEmail = event => {};
+
+    this.changePassword = event => {};
+
+    this.changeConfirmedPassword = event => {};
+  }
   render() {
+    const { email, password, confirmedPassword } = this.props;
     return (
       <div>
         <div className="auth-page">
@@ -12,12 +24,36 @@ class RegisterForm extends React.Component {
                   <a>Need an account?</a>
                 </p>
                 <h1 className="text-xs-center">Sign UP</h1>
-
-                <form>
+                <br />
+                <form onSubmit={this.submitForm(email, password)}>
                   <fieldset>
-                    <fieldset />
-
-                    <fieldset />
+                    <fieldset className="text-xs-center">
+                      <input
+                        value={email}
+                        placeholder="Email"
+                        onChange={this.changeEmail}
+                      />
+                    </fieldset>
+                    <br />
+                    <fieldset className="text-xs-center">
+                      <input
+                        placeholder="Password"
+                        value={password}
+                        onChange={this.changePassword}
+                      />
+                    </fieldset>
+                    <br />
+                    <fieldset className="text-xs-center">
+                      <input
+                        value={confirmedPassword}
+                        placeholder="Confirm Password"
+                        onChange={this.changeConfirmedPassword}
+                      />
+                    </fieldset>
+                    <br />
+                    <fieldset className="text-xs-center">
+                      <button>Sign UP</button>
+                    </fieldset>
 
                     <fieldset />
                   </fieldset>
