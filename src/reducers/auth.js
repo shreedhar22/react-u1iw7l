@@ -15,6 +15,13 @@ const auth = function(state = {}, action) {
 
     case 'UPDATE_AUTH_FIELD':
       return { ...state, [action.key]: action.value };
+
+    case 'REGISTER': 
+      return { 
+        ...state, 
+        inProgress: false,
+        errors: action.error ? action.payload.errors : null
+      }
   }
   return state;
 };

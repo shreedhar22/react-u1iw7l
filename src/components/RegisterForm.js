@@ -1,10 +1,22 @@
 import React from 'react';
 
+const mapDispatchToProps = dispatch => ({
+  onChangeEmail: value =>
+    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),
+  onChangePassword: value =>
+    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'password', value }),
+  onSubmitForm: (email, password) => value =>
+    dispatch({
+      type: 'REGISTER',
+      payload: agent.Auth.register(email, password)
+    })
+});
+
 class RegisterForm extends React.Component {
   constructor() {
     super();
 
-    this.submitForm = event => {};
+    this.submitForm = event => (email, password) => {};
 
     this.changeEmail = event => {};
 
