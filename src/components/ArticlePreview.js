@@ -1,66 +1,73 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import agent from '../agent';
 
 const mapDispatchToProps = dispatch => ({
-  // ToDo: correct the payload argument
-  //onChangeComment: value =>
-  //  dispatch({ type: 'COMMENT', payload: agent.Article.comment() })
+  // ToDo: correct the payload argument, define COMMENT in reducer
+  onChangeComment: value =>
+    dispatch({ type: 'COMMENT', payload: agent.Article.comment() })
 });
 
-const ArticlePreview = props => {
-  const article = props.article;
+class ArticlePreview extends React.Component {
+  constructor(props) {
+    super();
+    this.article = props.article;
+    this.changeComment = event =>
+      this.props.onChangeComment(event.target.value);
+  }
 
-  changeComment = event => props.onChangeComment(event.target.value);
+  render() {
+    return (
+      <div className="article-preview">
+        <div className="article-meta">
+          <a>
+            <img src={this.article.author.image} />
+          </a>
 
-  return (
-    <div className="article-preview">
-      <div className="article-meta">
-        <a>
-          <img src={article.author.image} />
+          <div className="info">
+            <a className="author">{this.article.author.username}</a>
+            <span className="date">
+              {new Date(this.article.createdAt).toDateString()}
+            </span>
+          </div>
+
+          <div className="pull-xs-right">
+            <button className="btn btn-sm btn-outline-primary">
+              <i className="ion-heart" /> {this.article.favoritesCount}
+            </button>
+          </div>
+        </div>
+
+        <a to={`article/${this.article.slug}`} className="preview-link">
+          <h1>{this.article.title}</h1>
+          <p>{this.article.description}</p>
+          <span>Read more...</span>
+          <ul className="tag-list">
+            {this.article.tagList.map(tag => {
+              return (
+                <li className="tag-default tag-pill tag-outline" key={tag}>
+                  {tag}
+                </li>
+              );
+            })}
+          </ul>
         </a>
 
-        <div className="info">
-          <a className="author">{article.author.username}</a>
-          <span className="date">
-            {new Date(article.createdAt).toDateString()}
-          </span>
-        </div>
-
-        <div className="pull-xs-right">
-          <button className="btn btn-sm btn-outline-primary">
-            <i className="ion-heart" /> {article.favoritesCount}
-          </button>
-        </div>
+        <br />
+        <button className="pull-xs-left" type="submit">
+          Comment
+        </button>
+        <br />
+        <br />
+        <input
+          className="form-control form-control-lg"
+          placeholder="Whats on your mind"
+          value="comment"
+          onChange={this.changeComment}
+        />
       </div>
+    );
+  }
+}
 
-      <a to={`article/${article.slug}`} className="preview-link">
-        <h1>{article.title}</h1>
-        <p>{article.description}</p>
-        <span>Read more...</span>
-        <ul className="tag-list">
-          {article.tagList.map(tag => {
-            return (
-              <li className="tag-default tag-pill tag-outline" key={tag}>
-                {tag}
-              </li>
-            );
-          })}
-        </ul>
-      </a>
-
-      <br />
-      <button className="pull-xs-left" type="submit">
-        Comment
-      </button>
-      <br />
-      <br />
-      <input
-        className="form-control form-control-lg"
-        placeholder="Whats on your mind"
-        value="comment"
-        onChange={changeComment}
-      />
-    </div>
-  );
-};
-
-export default ArticlePreview;
+export default connect(mapDispatchToProps)(ArticlePreview);
