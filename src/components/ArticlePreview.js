@@ -12,6 +12,7 @@ class ArticlePreview extends React.Component {
   constructor(props) {
     super();
     this.article = props.article;
+    // ToDo: this will only work after defining the changeComment function in dispatch
     this.changeComment = event =>
       this.props.onChangeComment(event.target.value);
   }
