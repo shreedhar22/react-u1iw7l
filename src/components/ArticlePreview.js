@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
+
+const mapDispatchToProps = dispatch => ({
+  // ToDo: correct the payload argument
+  //onChangeComment: value =>
+  //  dispatch({ type: 'COMMENT', payload: agent.Article.comment() })
+});
 
 const ArticlePreview = props => {
   const article = props.article;
+
+  changeComment = event => props.onChangeComment(event.target.value);
 
   return (
     <div className="article-preview">
@@ -38,6 +46,19 @@ const ArticlePreview = props => {
           })}
         </ul>
       </a>
+
+      <br />
+      <button className="pull-xs-left" type="submit">
+        Comment
+      </button>
+      <br />
+      <br />
+      <input
+        className="form-control form-control-lg"
+        placeholder="Whats on your mind"
+        value="comment"
+        onChange={changeComment}
+      />
     </div>
   );
 };

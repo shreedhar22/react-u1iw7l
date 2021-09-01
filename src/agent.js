@@ -26,6 +26,8 @@ const Articles = {
   all: page => requests.get('/articles?limit=10'),
   createArticle: (title, description) =>
     requests.post('/articles/create', { article: { title, description } })
+  // ToDo: correct the GET request to get comment of an article and uncomment it.
+  // comments: () => requests.get('articles/{slug}/comments', article.slug)
 };
 
 const Auth = {
