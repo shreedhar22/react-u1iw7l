@@ -4,8 +4,12 @@ import agent from '../agent';
 
 const mapDispatchToProps = dispatch => ({
   // ToDo: correct the payload argument, define COMMENT in reducer
-  onChangeComment: value =>
-    dispatch({ type: 'COMMENT', payload: agent.Article.comment() })
+  onChangeComment: value => dispatch({ type: 'POST_COMMENT' }),
+  populateComments: article_slug => value =>
+    dispatch({
+      type: 'POPULATE_COMMENTS',
+      payload: agent.Comments.comments(article_slug)
+    })
 });
 
 class ArticlePreview extends React.Component {
@@ -15,6 +19,8 @@ class ArticlePreview extends React.Component {
     // ToDo: this will only work after defining the changeComment function in dispatch
     this.changeComment = event =>
       this.props.onChangeComment(event.target.value);
+    this.populateComments = article_slug => event =>
+      this.props.populateComments(article_slug);
   }
 
   render() {
@@ -55,7 +61,11 @@ class ArticlePreview extends React.Component {
         </a>
 
         <br />
-        <button className="pull-xs-left" type="submit">
+        <button
+          className="pull-xs-left"
+          type="submit"
+          onClick={this.populateComments(this.article.slug)}
+        >
           Comment
         </button>
         <br />

@@ -27,7 +27,14 @@ const Articles = {
   createArticle: (title, description) =>
     requests.post('/articles/create', { article: { title, description } })
   // ToDo: correct the GET request to get comment of an article and uncomment it.
-  // comments: () => requests.get('articles/{slug}/comments', article.slug)
+  //
+};
+
+const Comments = {
+  comments: article_slug =>
+    requests.get('articles/{slug}/comments', {
+      slug: { article_slug }
+    })
 };
 
 const Auth = {
@@ -43,5 +50,6 @@ export default {
   Auth,
   setToken: _token => {
     token = _token;
-  }
+  },
+  Comments
 };
