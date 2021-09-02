@@ -31,7 +31,7 @@ const Articles = {
 };
 
 const Comments = {
-  comments: article_slug =>
+  populate: article_slug =>
     requests.get('articles/{slug}/comments', {
       slug: { article_slug }
     })

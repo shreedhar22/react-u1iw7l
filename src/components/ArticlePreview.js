@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
   populateComments: article_slug => value =>
     dispatch({
       type: 'POPULATE_COMMENTS',
-      payload: agent.Comments.comments(article_slug)
+      payload: agent.Comments.populate(article_slug)
     })
 });
 
@@ -16,6 +16,7 @@ class ArticlePreview extends React.Component {
   constructor(props) {
     super();
     this.article = props.article;
+    this.comments = props.comments;
     // ToDo: this will only work after defining the changeComment function in dispatch
     this.changeComment = event =>
       this.props.onChangeComment(event.target.value);
@@ -68,6 +69,11 @@ class ArticlePreview extends React.Component {
         >
           Comment
         </button>
+
+        <a>
+          <p> {this.comments.body}</p>
+        </a>
+
         <br />
         <br />
         <input
