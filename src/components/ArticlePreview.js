@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../agent';
 
+const mapStateToProps = state => {
+  comments = state.home.comments;
+};
+
 const mapDispatchToProps = dispatch => ({
   // ToDo: correct the payload argument, define COMMENT in reducer
   onChangeComment: value => dispatch({ type: 'POST_COMMENT' }),
@@ -17,11 +21,18 @@ class ArticlePreview extends React.Component {
     super();
     this.article = props.article;
     this.comments = props.comments;
+    console.log('props object comments is ' + props.comments);
     // ToDo: this will only work after defining the changeComment function in dispatch
     this.changeComment = event =>
       this.props.onChangeComment(event.target.value);
-    this.populateComments = article_slug => event =>
+    this.populateComments = article_slug => event => {
+      console.log('article slug is: ' + article_slug);
+      event.preventDefault();
+      console.log(
+        'comments payload from agent: ' + agent.Comments.populate(article_slug)
+      );
       this.props.populateComments(article_slug);
+    };
   }
 
   render() {
@@ -71,7 +82,7 @@ class ArticlePreview extends React.Component {
         </button>
 
         <a>
-          <p> {this.comments.body}</p>
+          <p> comments here</p>
         </a>
 
         <br />

@@ -10,7 +10,7 @@ const home = function(state = defaultState, action) {
     }
 
     case 'POPULATE_COMMENTS': {
-      return { ...state, comments: action.payload.article_slug };
+      return { ...state, comments: action.payload.comments };
     }
   }
   return state;
