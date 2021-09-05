@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import ArticlePreview from "./ArticlePreview";
-import React from "react";
+import ArticlePreview from './ArticlePreview';
+import React from 'react';
 
 const ArticleList = props => {
   if (!props.articles) {

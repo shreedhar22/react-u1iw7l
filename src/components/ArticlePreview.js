@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../agent';
 
-const mapStateToProps = state => {
-  comments = state.home.comments;
-};
+const mapStateToProps = state => ({
+  comments: state.home.comments
+});
 
 const mapDispatchToProps = dispatch => ({
   // ToDo: correct the payload argument, define COMMENT in reducer
