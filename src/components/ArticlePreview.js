@@ -98,4 +98,7 @@ class ArticlePreview extends React.Component {
   }
 }
 
-export default connect(mapDispatchToProps)(ArticlePreview);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ArticlePreview);
