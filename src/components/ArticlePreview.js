@@ -22,17 +22,21 @@ class ArticlePreview extends React.Component {
     this.article = props.article;
     this.comments = props.comments;
     console.log('props object comments is ' + props.comments);
+    console.log('props object article is ' + props.article);
+
     // ToDo: this will only work after defining the changeComment function in dispatch
-    this.changeComment = event =>
-      this.props.onChangeComment(event.target.value);
-    this.populateComments = article_slug => event => {
+    // this.changeComment = event =>
+    //   this.props.onChangeComment(event.target.value);
+    console.log(
+      'comments payload from agent: ' +
+        agent.Comments.populate(props.article.slug)
+    );
+    this.populateComments = article_slug => {
       console.log('article slug is: ' + article_slug);
-      event.preventDefault();
-      console.log(
-        'comments payload from agent: ' + agent.Comments.populate(article_slug)
-      );
       this.props.populateComments(article_slug);
     };
+
+    // ToDo: useDisptch(), middleware to handle asynchronous events
   }
 
   render() {
