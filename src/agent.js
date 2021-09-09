@@ -32,16 +32,16 @@ const Articles = {
 
 console.log('Articles: ' + Articles.all);
 
-alert(JSON.stringify(Articles.all(), null, 4));
-
 const Comments = {
   populate: article_slug =>
-    requests.get('articles/{slug}/comments', article_slug)
+    requests.get('articles/{slug}/comments', { slug: article_slug })
 };
 
 // getComments().then() = commentsObj => ({
 //   console.log(commentsObj)
 // })
+
+console.log('Comments: ' + Comments.populate);
 
 const Auth = {
   current: () => requests.get('/user'),

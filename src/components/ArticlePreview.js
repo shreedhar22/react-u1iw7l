@@ -2,37 +2,41 @@ import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../agent';
 
-const mapStateToProps = state => ({
-  comments: state.home.comments
-});
+const Promise = global.Promise;
+
+// This is how arrow function with a return statements
+// looks like when enlarged
+const mapStateToProps = function(state) {
+  return { comments: state.home.comments };
+};
 
 const mapDispatchToProps = dispatch => ({
   // ToDo: correct the payload argument, define COMMENT in reducer
   onChangeComment: value => dispatch({ type: 'POST_COMMENT' }),
-  populateComments: article_slug => value =>
+  populateComments: function(article_slug) {
     dispatch({
       type: 'POPULATE_COMMENTS',
       payload: agent.Comments.populate(article_slug)
-    })
+    });
+  }
 });
 
 class ArticlePreview extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.article = props.article;
     this.comments = props.comments;
     console.log('props object comments is ' + props.comments);
     console.log('props object article is ' + props.article);
 
     // ToDo: this will only work after defining the changeComment function in dispatch
-    // this.changeComment = event =>
-    //   this.props.onChangeComment(event.target.value);
-    console.log(
-      'comments payload from agent: ' +
-        agent.Comments.populate(props.article.slug)
-    );
+    this.changeComment = event =>
+      this.props.onChangeComment(event.target.value);
     this.populateComments = article_slug => {
       console.log('article slug is: ' + article_slug);
+      // console.log(
+      //   'comments payload from agent: ' + agent.Comments.populate(article_slug)
+      // );
       this.props.populateComments(article_slug);
     };
 
