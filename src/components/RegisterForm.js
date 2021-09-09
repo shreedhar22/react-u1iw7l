@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
+import agent from "../agent";
 
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
-    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),
+    dispatch({ type: "UPDATE_AUTH_FIELD", key: "email", value }),
   onChangePassword: value =>
-    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'password', value }),
+    dispatch({ type: "UPDATE_AUTH_FIELD", key: "password", value }),
   onSubmitForm: (email, password) => value =>
     dispatch({
-      type: 'REGISTER',
+      type: "REGISTER",
       payload: agent.Auth.register(email, password)
     })
 });
