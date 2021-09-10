@@ -11,8 +11,13 @@ const reducer = combineReducers({
   home
 });
 
-const middleware = applyMiddleware(promiseMiddleware);
+// Not sused as of now
+// const middleware = applyMiddleware(promiseMiddleware);
 
-const store = createStore(reducer, applyMiddleware(promiseMiddleware));
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(promiseMiddleware)
+);
 
 export default store;
