@@ -14,6 +14,10 @@ const home = function(state = defaultState, action) {
       console.log("comments from reducer: " + action.payload.comments);
       return { ...state, comments: action.payload.comments };
     }
+
+    // case "POST_COMMENTS": {
+    //   return { ...state, };
+    // }
   }
   return state;
 };

@@ -30,9 +30,9 @@ const Articles = {
 
 const Comments = {
   populate: article_slug =>
-    requests.get("/articles/" + article_slug + "/comments"),
-  makeAComment: (article_slug, value) =>
-    requests.post("/articles/" + article_slug + "/comments/", value)
+    requests.get("/articles/" + article_slug + "/comments")
+  // postComment: (article_slug, value) =>
+  //   requests.post("/articles/" + article_slug + "/comments/", value)
 };
 
 const Auth = {
