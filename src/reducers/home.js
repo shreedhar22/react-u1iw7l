@@ -15,8 +15,12 @@ const home = function(state = defaultState, action) {
       return { ...state, comments: action.payload.comments };
     }
 
-    // case "POST_COMMENTS": {
-    //   return { ...state, };
+    case "POST_COMMENT": {
+      return { ...state };
+    }
+
+    // case "UPDATE_COMMENT": {
+    //   return { ... state, action.}
     // }
   }
   return state;

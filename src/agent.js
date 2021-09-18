@@ -30,9 +30,9 @@ const Articles = {
 
 const Comments = {
   populate: article_slug =>
-    requests.get("/articles/" + article_slug + "/comments")
-  // postComment: (article_slug, value) =>
-  //   requests.post("/articles/" + article_slug + "/comments/", value)
+    requests.get("/articles/" + article_slug + "/comments"),
+  postComment: (article_slug, value) =>
+    requests.post("/articles/" + article_slug + "/comments/", value)
 };
 
 const Auth = {
@@ -42,6 +42,8 @@ const Auth = {
   register: (email, password) =>
     requests.post("/users/register", { user: { email, password } })
 };
+
+console.log("auth current: " + Auth.current());
 
 export default {
   Articles,

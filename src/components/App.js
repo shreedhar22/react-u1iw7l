@@ -1,8 +1,8 @@
-import React from 'react';
-import '.././style.css';
-import { connect } from 'react-redux';
-import Header from './Header.js';
-import agent from '../agent.js';
+import React from "react";
+import ".././style.css";
+import { connect } from "react-redux";
+import Header from "./Header.js";
+import agent from "../agent.js";
 
 // states(appName, currentUser and redirectTo(where)) are
 // fetched from the common reducer to attach to props
@@ -15,8 +15,8 @@ const mapStateToProps = state => ({
 // actions(onLoad, onRedirect) are dispatched to
 // props to store them in common reducer(redux store)
 const mapDispatchToProps = dispatch => ({
-  onLoad: (payload, token) => dispatch({ type: 'APP_LOAD', payload, token }),
-  onRedirect: () => dispatch({ type: 'REDIRECT' })
+  onLoad: (payload, token) => dispatch({ type: "APP_LOAD", payload, token }),
+  onRedirect: () => dispatch({ type: "REDIRECT" })
 });
 
 class App extends React.Component {
@@ -24,12 +24,15 @@ class App extends React.Component {
   // props they are first fetched from the agent.
   // onLoad is then dispatched within mapDispatchToProps
   componentWillMount() {
-    const token = window.localStorage.getItem('jwt');
+    const token = window.localStorage.getItem("jwt");
+    console.log("token while storing locally: " + token);
     if (token) {
+      console.log("token after if: " + token);
       agent.setToken(token);
     }
 
     this.props.onLoad(token ? agent.Auth.current() : null, token);
+    console.log("agent auth current:" + agent.Auth.current());
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
@@ -47,7 +50,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
