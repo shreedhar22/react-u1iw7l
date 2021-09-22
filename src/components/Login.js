@@ -6,6 +6,8 @@ import { Link } from "react-router";
 
 const mapStateToProps = state => ({ ...state.auth });
 
+// test if git notification on Slack work again
+
 // actions(onSubmit, onChangeEmail/Pass) are dispatched to
 // props to store them in auth reducer.
 
