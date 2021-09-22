@@ -1,20 +1,21 @@
-import React from 'react';
-import agent from '../agent';
-import ListErrors from './ListErrors';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import React from "react";
+import agent from "../agent";
+import ListErrors from "./ListErrors";
+import { connect } from "react-redux";
+import { Link } from "react-router";
 
 const mapStateToProps = state => ({ ...state.auth });
 
-// actions(onSubmit, onChangeEmail/Pass) are dispatched to props to store them in auth
-// reducer
+// actions(onSubmit, onChangeEmail/Pass) are dispatched to
+// props to store them in auth reducer.
+
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
-    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'email', value }),
+    dispatch({ type: "UPDATE_AUTH_FIELD", key: "email", value }),
   onChangePassword: value =>
-    dispatch({ type: 'UPDATE_AUTH_FIELD', key: 'password', value }),
+    dispatch({ type: "UPDATE_AUTH_FIELD", key: "password", value }),
   onSubmit: (email, password) => value =>
-    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) })
+    dispatch({ type: "LOGIN", payload: agent.Auth.login(email, password) })
 });
 
 class Login extends React.Component {
@@ -67,13 +68,15 @@ class Login extends React.Component {
                     />
                   </fieldset>
 
-                  <button
-                    className="btn btn-lg btn-primary pull-xs-right"
-                    type="submit"
-                    disabled={this.props.inProgress}
-                  >
-                    Sign in
-                  </button>
+                  <Link to="/">
+                    <button
+                      className="btn btn-lg btn-primary pull-xs-right"
+                      type="submit"
+                      disabled={this.props.inProgress}
+                    >
+                      Sign in
+                    </button>
+                  </Link>
                   <br />
                   <br />
                   <br />
@@ -92,7 +95,4 @@ class Login extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

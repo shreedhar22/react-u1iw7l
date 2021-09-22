@@ -35,7 +35,7 @@ class ArticlePreview extends React.Component {
       this.props.populateComments(article_slug);
     };
 
-    // ToDo: useDisptch(), middleware to handle asynchronous events
+    // ToDo: useDispatch(), middleware to handle asynchronous events
   }
 
   render() {

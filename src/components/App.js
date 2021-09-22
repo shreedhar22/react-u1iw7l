@@ -1,7 +1,7 @@
 import React from "react";
 import ".././style.css";
 import { connect } from "react-redux";
-import Header from "./Header.js";
+import { LoggedInView } from "./Header";
 import agent from "../agent.js";
 
 // states(appName, currentUser and redirectTo(where)) are
@@ -25,9 +25,7 @@ class App extends React.Component {
   // onLoad is then dispatched within mapDispatchToProps
   componentWillMount() {
     const token = window.localStorage.getItem("jwt");
-    console.log("token while storing locally: " + token);
     if (token) {
-      console.log("token after if: " + token);
       agent.setToken(token);
     }
 
@@ -43,10 +41,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header appName={this.props.appName} />
+        <LoggedInView appName={this.props.appName} />
         {this.props.children}
       </div>
     );
+    // } else {
+    //   return (
+    //     <div>
+    //       <LoggedOutView appName={this.props.appName} />
+    //       {this.props.children}
+    //     </div>
+    //   );
+    // }
   }
 }
 
