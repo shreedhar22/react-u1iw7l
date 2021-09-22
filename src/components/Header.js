@@ -58,4 +58,4 @@ class LoggedOutView extends React.Component {
   }
 }
 
-export default LoggedOutView;
+export { LoggedInView, LoggedOutView };

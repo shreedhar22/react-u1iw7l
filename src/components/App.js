@@ -1,7 +1,7 @@
 import React from "react";
 import ".././style.css";
 import { connect } from "react-redux";
-import { LoggedInView } from "./Header";
+import { LoggedInView, LoggedOutView } from "./Header.js";
 import agent from "../agent.js";
 
 // states(appName, currentUser and redirectTo(where)) are
