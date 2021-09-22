@@ -39,20 +39,21 @@ class App extends React.Component {
     }
   }
   render() {
-    return (
-      <div>
-        <LoggedInView appName={this.props.appName} />
-        {this.props.children}
-      </div>
-    );
-    // } else {
-    //   return (
-    //     <div>
-    //       <LoggedOutView appName={this.props.appName} />
-    //       {this.props.children}
-    //     </div>
-    //   );
-    // }
+    if (this.props.currentUser) {
+      return (
+        <div>
+          <LoggedOutView appName={this.props.appName} />
+          {this.props.children}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <LoggedInView appName={this.props.appName} />
+          {this.props.children}
+        </div>
+      );
+    }
   }
 }
 
