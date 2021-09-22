@@ -10,8 +10,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   // ToDo: correct the payload argument, define COMMENT in reducer
-  // postComment: (article_slug, value) =>
-  //   dispatch({ type: "POST_COMMENT", article_slug, value }),
+  postComment: (article_slug, value) =>
+    dispatch({ type: "POST_COMMENT", article_slug, value }),
   populateComments: article_slug => {
     dispatch({
       type: "POPULATE_COMMENTS",
@@ -35,7 +35,7 @@ class ArticlePreview extends React.Component {
       this.props.populateComments(article_slug);
     };
 
-    // ToDo: useDisptch(), middleware to handle asynchronous events
+    // ToDo: useDispatch(), middleware to handle asynchronous events
   }
 
   render() {
@@ -90,12 +90,14 @@ class ArticlePreview extends React.Component {
 
         <br />
         <br />
-        {/* <input
-          className="form-control form-control-lg"
-          placeholder="Whats on your mind"
-          value={comment}
-          onChange={this.postComment}
-        /> */}
+        {/* <form onSubmit={this.postComment(comment, this.article.slug)}>
+          <input
+            className="form-control form-control-lg"
+            placeholder="Whats on your mind"
+            value={comment}
+            onChange={this.onChange}
+          />
+        </form> */}
       </div>
     );
   }

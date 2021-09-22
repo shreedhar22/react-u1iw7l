@@ -1,7 +1,13 @@
 const defaultState = {
   articles: [],
-  comments: null
+  comments: []
 };
+
+// After actions are dispetched by the mpaDispatchToProps,
+// reducers are there to store the state in the redux store.
+// In ths Home Reducer, the state of the articles and comments
+// are stored after actions are dispatched along with the respective
+// payloads(articles and comments).
 
 const home = function(state = defaultState, action) {
   switch (action.type) {
@@ -15,8 +21,12 @@ const home = function(state = defaultState, action) {
       return { ...state, comments: action.payload.comments };
     }
 
-    // case "POST_COMMENTS": {
-    //   return { ...state, };
+    case "POST_COMMENT": {
+      return { ...state };
+    }
+
+    // case "UPDATE_COMMENT": {
+    //   return { ... state, action.}
     // }
   }
   return state;
