@@ -1,7 +1,7 @@
 const defaultState = {
   appName: "Conduit",
-  token: "null",
-  currentUser: "null"
+  token: null,
+  currentUser: {}
 };
 
 // After actions are dispatched by the mpaDispatchToProps,

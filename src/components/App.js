@@ -1,7 +1,8 @@
 import React from "react";
 import ".././style.css";
 import { connect } from "react-redux";
-import { LoggedInView, LoggedOutView } from "./Header.js";
+import LoggedInView from "./LoggedInView";
+import LoggedOutView from "./LoggedOutView";
 import agent from "../agent.js";
 
 // states(appName, currentUser and redirectTo(where)) are
@@ -50,7 +51,6 @@ class App extends React.Component {
       return (
         <div>
           <LoggedInView appName={this.props.appName} />
-          {this.props.children}
         </div>
       );
     }

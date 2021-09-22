@@ -29,14 +29,13 @@ const Articles = {
 };
 
 const Comments = {
-  populate: article_slug =>
-    requests.get("/articles/" + article_slug + "/comments"),
+  populate: article_slug => requests.get(`/articles/${article_slug}/comments`),
   postComment: (article_slug, value) =>
     requests.post("/articles/" + article_slug + "/comments/", value)
 };
 
 const Auth = {
-  current: () => requests.get("/user"),
+  current: () => requests.get("/user/current"),
   login: (email, password) =>
     requests.post("/users/login", { user: { email, password } }),
   register: (email, password) =>
