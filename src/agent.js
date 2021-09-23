@@ -35,11 +35,11 @@ const Comments = {
 };
 
 const Auth = {
-  current: () => requests.get("/user/current"),
+  current: () => requests.get("/user"),
   login: (email, password) =>
-    requests.post("/users/login", { user: { email, password } }),
-  register: (email, password) =>
-    requests.post("/users/register", { user: { email, password } })
+    requests.post("/users/login", { user: { email, password } })
+  // register: (email, password) =>
+  //   requests.post("/users/register", { user: { email, password } })
 };
 
 console.log("auth current: " + Auth.current());
