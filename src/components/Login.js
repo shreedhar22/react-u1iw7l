@@ -16,8 +16,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: "UPDATE_AUTH_FIELD", key: "email", value }),
   onChangePassword: value =>
     dispatch({ type: "UPDATE_AUTH_FIELD", key: "password", value }),
-  onSubmit: (email, password) => value =>
-    dispatch({ type: "LOGIN", payload: agent.Auth.login(email, password) })
+  onSubmit: payload => dispatch({ type: "LOGIN", payload })
 });
 
 class Login extends React.Component {
@@ -30,7 +29,15 @@ class Login extends React.Component {
 
     this.submitForm = (email, password) => event => {
       event.preventDefault();
-      this.props.onSubmit(email, password);
+      const authLoginPromise = agent.Auth.login(email, password);
+
+      this.props.onSubmit(authLoginPromise);
+      authLoginPromise.then(data => {
+        console.log(data);
+        //this.props.appLoad()
+        // redirect after after login promiuse resolved
+      });
+      // Trigger flag to render loading spinning thing
     };
   }
 
@@ -43,7 +50,9 @@ class Login extends React.Component {
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Sign In</h1>
               <p className="text-xs-center">
-                <a>Need an account?</a>
+                <Link to="register">
+                  <a>Need an account?</a>
+                </Link>
               </p>
 
               <ListErrors errors={this.props.errors} />
@@ -77,15 +86,6 @@ class Login extends React.Component {
                   >
                     Sign in
                   </button>
-
-                  <br />
-                  <br />
-                  <br />
-                  <Link to="register">
-                    <button className="btn btn-lg btn-primary pull-xs-right">
-                      Register
-                    </button>
-                  </Link>
                 </fieldset>
               </form>
             </div>

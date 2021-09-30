@@ -1,7 +1,7 @@
 const defaultState = {
   appName: "Conduit",
-  token: "null",
-  currentUser: "null"
+  token: null,
+  currentUser: null
 };
 
 // After actions are dispatched by the mpaDispatchToProps,
@@ -20,7 +20,7 @@ const common = (state = defaultState, action) => {
     case "APP_LOAD":
       return {
         ...state,
-        token: action.token || null,
+        token: action.payload ? action.payload.user.token : null,
         appLoaded: true,
         currentUser: action.payload ? action.payload.user : null
       };

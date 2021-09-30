@@ -10,16 +10,19 @@ const API_ROOT = "https://conduit.productionready.io/api";
 const responseBody = res => res.body;
 
 let token = null;
+
 const tokenPlugin = req => {
   if (token) {
     req.set("authorization", `Token ${token}`);
   }
+  return req;
 };
 
 const requests = {
-  get: url => superagent.get(`${API_ROOT}${url}`).then(responseBody),
+  get: url =>
+    tokenPlugin(superagent.get(`${API_ROOT}${url}`)).then(responseBody),
   post: (url, body) =>
-    superagent.post(`${API_ROOT}${url}`, body).then(responseBody)
+    tokenPlugin(superagent.post(`${API_ROOT}${url}`, body)).then(responseBody)
 };
 
 const Articles = {
@@ -29,8 +32,7 @@ const Articles = {
 };
 
 const Comments = {
-  populate: article_slug =>
-    requests.get("/articles/" + article_slug + "/comments"),
+  populate: article_slug => requests.get(`/articles/${article_slug}/comments`),
   postComment: (article_slug, value) =>
     requests.post("/articles/" + article_slug + "/comments/", value)
 };
@@ -38,9 +40,9 @@ const Comments = {
 const Auth = {
   current: () => requests.get("/user"),
   login: (email, password) =>
-    requests.post("/users/login", { user: { email, password } }),
-  register: (email, password) =>
-    requests.post("/users/register", { user: { email, password } })
+    requests.post("/users/login", { user: { email, password } })
+  // register: (email, password) =>
+  //   requests.post("/users/register", { user: { email, password } })
 };
 
 console.log("auth current: " + Auth.current());
