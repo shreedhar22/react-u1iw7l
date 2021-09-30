@@ -18,7 +18,7 @@ class LoggedInView extends React.Component {
                 Home
               </Link>
             </li>
-            <li className="nav-item">{this.props.currentUser.name}</li>
+            <li className="nav-item">{this.props.currentUser}</li>
             <li className="nav-item">
               <Link to="login" className="nav-link">
                 LogOut

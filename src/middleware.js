@@ -1,9 +1,9 @@
-'use strict';
-import agent from './agent.js';
+"use strict";
+import agent from "./agent.js";
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
-    store.dispatch({ type: 'ASYNC_START', subtype: action.type });
+    store.dispatch({ type: "ASYNC_START", subtype: action.type });
     action.payload.then(
       res => {
         action.payload = res;
@@ -23,16 +23,16 @@ const promiseMiddleware = store => next => action => {
 };
 
 function isPromise(v) {
-  return v && typeof v.then === 'function';
+  return v && typeof v.then === "function";
 }
 
 const localStorageMiddleware = store => next => action => {
-  if (action.type === 'LOGIN' || action.type === 'REGISTER') {
+  if (action.type === "LOGIN" || action.type === "REGISTER") {
     if (!action.error) {
-      window.localStorage.setItem('jwt', action.payload.user.token);
+      window.localStorage.setItem("jwt", action.payload.user.token);
       agent.setToken(action.payload.user.token);
-    } else if (action.type === 'LOGOUT') {
-      window.localStorage.setItem('jwt', '');
+    } else if (action.type === "LOGOUT") {
+      window.localStorage.setItem("jwt", "");
       agent.setToken(null);
     }
   }

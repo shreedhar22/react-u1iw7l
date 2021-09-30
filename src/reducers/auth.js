@@ -16,6 +16,12 @@ const auth = function(state = {}, action) {
       }
       break;
 
+    // Instead of dispatching email/password to reducer just
+    // store simple states in Login component
+    // Redux is firing up update_auth_field so many time, which it
+    // really doesn't need to.
+    // You only wanna do this if the state is global - which is when
+    // multiple components are using the same state.
     case "UPDATE_AUTH_FIELD":
       return { ...state, [action.key]: action.value };
 

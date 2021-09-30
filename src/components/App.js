@@ -7,6 +7,7 @@ import agent from "../agent.js";
 
 // states(appName, currentUser and redirectTo(where)) are
 // fetched from the common reducer to attach to props
+
 const mapStateToProps = state => ({
   appName: state.common.appName,
   currentUser: state.common.currentUser,
@@ -33,12 +34,14 @@ class App extends React.Component {
     this.props.onLoad(token ? agent.Auth.current() : null, token);
     console.log("agent auth current:" + agent.Auth.current());
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.redirectTo) {
-      this.context.router.replace(nextProps.redirectTo);
-      this.props.onRedirect();
-    }
-  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.redirectTo) {
+  //     this.context.router.replace(nextProps.redirectTo);
+  //     this.props.onRedirect();
+  //   }
+  // }
+
   render() {
     //  if (this.props.currentUser) {
     return (

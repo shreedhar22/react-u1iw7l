@@ -16,8 +16,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: "UPDATE_AUTH_FIELD", key: "email", value }),
   onChangePassword: value =>
     dispatch({ type: "UPDATE_AUTH_FIELD", key: "password", value }),
-  onSubmit: (email, password) =>
-    dispatch({ type: "LOGIN", payload: agent.Auth.login(email, password) })
+  onSubmit: payload => dispatch({ type: "LOGIN", payload })
 });
 
 class Login extends React.Component {
@@ -30,7 +29,15 @@ class Login extends React.Component {
 
     this.submitForm = (email, password) => event => {
       event.preventDefault();
-      this.props.onSubmit(email, password);
+      const authLoginPromise = agent.Auth.login(email, password);
+
+      this.props.onSubmit(authLoginPromise);
+      authLoginPromise.then(data => {
+        console.log(data);
+        //this.props.appLoad()
+        // redirect after after login promiuse resolved
+      });
+      // Trigger flag to render loading spinning thing
     };
   }
 
