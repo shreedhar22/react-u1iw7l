@@ -25,8 +25,6 @@ class ArticlePreview extends React.Component {
     super(props);
     this.article = props.article;
     this.comments = props.comments;
-    console.log("props object comments is " + props.comments);
-    console.log("props object article is " + props.article);
 
     // ToDo: this will only work after defining the changeComment function in dispatch
     this.postComment = (article_slug, event) =>

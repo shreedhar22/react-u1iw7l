@@ -38,7 +38,9 @@ const Comments = {
 };
 
 const Auth = {
-  current: () => requests.get("/user"),
+  current: function() {
+    requests.get("/user");
+  },
   login: (email, password) =>
     requests.post("/users/login", { user: { email, password } })
   // register: (email, password) =>
