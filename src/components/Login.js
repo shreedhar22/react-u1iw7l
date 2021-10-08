@@ -4,7 +4,9 @@ import ListErrors from "./ListErrors";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 
-const mapStateToProps = state => ({ ...state.auth });
+const mapStateToProps = state => ({
+  ...state.auth
+});
 
 // test if git notification on Slack work again
 

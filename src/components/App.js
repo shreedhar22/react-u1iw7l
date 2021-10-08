@@ -35,12 +35,12 @@ class App extends React.Component {
     console.log("agent auth current:" + agent.Auth.current());
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.redirectTo) {
-  //     this.context.router.replace(nextProps.redirectTo);
-  //     this.props.onRedirect();
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.redirectTo) {
+      this.context.router.replace(nextProps.redirectTo);
+      this.props.onRedirect();
+    }
+  }
 
   render() {
     //  if (this.props.currentUser) {
@@ -59,5 +59,9 @@ class App extends React.Component {
     // }
   }
 }
+
+App.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
