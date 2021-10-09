@@ -37,6 +37,7 @@ class App extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
+      debugger;
       this.context.router.replace(nextProps.redirectTo);
       this.props.onRedirect();
     }
