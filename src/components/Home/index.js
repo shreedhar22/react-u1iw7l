@@ -1,8 +1,8 @@
-import Banner from "./Banner";
-import MainView from "./MainView";
-import React from "react";
-import agent from "../../agent";
-import { connect } from "react-redux";
+import Banner from './Banner';
+import MainView from './MainView';
+import React from 'react';
+import agent from '../../agent';
+import { connect } from 'react-redux';
 
 const Promise = global.Promise;
 
@@ -10,11 +10,9 @@ const mapStateToProps = state => ({
   appName: state.common.appName
 });
 
-debugger;
-
 // onLoad action along with the payload is dispatched to props and stored in the redux store
 const mapDispatchToProps = dispatch => ({
-  onLoad: payload => dispatch({ type: "HOME_PAGE_LOADED", payload })
+  onLoad: payload => dispatch({ type: 'HOME_PAGE_LOADED', payload })
 });
 
 class Home extends React.Component {
@@ -30,11 +28,22 @@ class Home extends React.Component {
         <Banner appName={this.props.appName} />
 
         <div className="container page">
-          <MainView />
+          <div className="row">
+            <MainView />
+
+            <div className="col-md-3">
+              <div className="sidebar">
+                <p>Popular Tags</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
