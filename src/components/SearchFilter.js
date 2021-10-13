@@ -51,10 +51,10 @@ class SearchFilter extends React.Component {
         });
       }
 
-      console.log(
-        "filteredArticles are after filtering today's articles" +
-          filteredArticles
-      );
+      //   console.log(
+      //     "filteredArticles are after filtering today's articles" +
+      //       filteredArticles
+      //   );
 
       if (filters["popular"] == true) {
         filteredArticles.filter(function(article) {
@@ -62,9 +62,9 @@ class SearchFilter extends React.Component {
         });
       }
 
-      console.log(
-        "filteredArticles are after filtering popular ones" + filteredArticles
-      );
+      //   console.log(
+      //     "filteredArticles are after filtering popular ones" + filteredArticles
+      //   );
     };
   }
 
