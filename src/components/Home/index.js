@@ -10,6 +10,8 @@ const mapStateToProps = state => ({
   appName: state.common.appName
 });
 
+debugger;
+
 // onLoad action along with the payload is dispatched to props and stored in the redux store
 const mapDispatchToProps = dispatch => ({
   onLoad: payload => dispatch({ type: "HOME_PAGE_LOADED", payload })
