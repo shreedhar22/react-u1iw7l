@@ -11,7 +11,6 @@ class MainView extends React.Component {
   constructor(props) {
     super(props);
     console.log("props in Main View: " + JSON.stringify(props));
-    debugger;
     this.articles = props.articles;
   }
 

@@ -21,7 +21,6 @@ class SearchFilter extends React.Component {
   constructor(props) {
     super(props);
     console.log("props in Search Filter: " + JSON.stringify(props));
-    debugger;
     this.articles = props.articles;
     console.log("articles in Search Filter: " + JSON.stringify(this.articles));
 
