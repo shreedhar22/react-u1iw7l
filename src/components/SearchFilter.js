@@ -20,6 +20,7 @@ const popularTags = {
 class SearchFilter extends React.Component {
   constructor(props) {
     super(props);
+    console.log("props in Search Filter: " + JSON.stringify(props));
     debugger;
     this.articles = props.articles;
     console.log("articles in Search Filter: " + JSON.stringify(this.articles));
@@ -53,17 +54,18 @@ class SearchFilter extends React.Component {
 
       console.log(
         "filteredArticles are after filtering today's articles" +
-          filteredArticles
+          JSON.stringify(filteredArticles)
       );
 
       if (filters["popular"] == true) {
-        filteredArticles.filter(function(article) {
+        filteredArticles.filter(article => {
           return article.favoritesCount >= 50;
         });
       }
 
       console.log(
-        "filteredArticles are after filtering popular ones" + filteredArticles
+        "filteredArticles are after filtering popular ones" +
+          JSON.stringify(filteredArticles)
       );
     };
   }

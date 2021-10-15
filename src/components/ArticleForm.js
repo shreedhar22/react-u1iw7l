@@ -36,14 +36,14 @@ class ArticleForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.SubmitForm(title, description)}>
-          <a> Title </a>
+          <h1> Title </h1>
           <input
             type="string"
             id="title"
             onChangeTitle={/* TODO: add a onChange function */}
           />
 
-          <a> Description </a>
+          <h1> Description </h1>
           <input
             type="string"
             id="description"
