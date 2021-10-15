@@ -35,7 +35,7 @@ class SearchFilter extends React.Component {
 
     this.filterArticles = () => {
       var filteredArticles = this.articles;
-      if (filters["today"] == true) {
+      if (filters.today) {
         var today = new Date();
         var todays_date =
           today.getFullYear() +
@@ -57,7 +57,7 @@ class SearchFilter extends React.Component {
           JSON.stringify(filteredArticles)
       );
 
-      if (filters["popular"] == true) {
+      if (filters.popular) {
         filteredArticles.filter(article => {
           return article.favoritesCount >= 50;
         });
