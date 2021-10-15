@@ -33,10 +33,10 @@ class SearchFilter extends React.Component {
     };
 
     this.filterArticles = () => {
-      var filteredArticles = this.articles;
+      const filteredArticles = this.articles;
       if (filters.today) {
-        var today = new Date();
-        var todays_date =
+        const today = new Date();
+        const todays_date =
           today.getFullYear() +
           "-" +
           (today.getMonth() + 1) +
@@ -46,7 +46,7 @@ class SearchFilter extends React.Component {
         console.log("today's date is " + todays_date);
 
         filteredArticles.filter(article => {
-          var article_date = article.createdAt.split("T");
+          const article_date = article.createdAt.split("T");
           return article_date == todays_date;
         });
       }
