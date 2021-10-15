@@ -3,7 +3,7 @@
 import ArticlePreview from "./ArticlePreview";
 import React from "react";
 
-class ArticleList extends React.Component {
+class ArticleContainer extends React.Component {
   constructor(props) {
     super(props);
     this.articles = props.articles;
@@ -30,4 +30,4 @@ class ArticleList extends React.Component {
   }
 }
 
-export default ArticleList;
+export default ArticleContainer;

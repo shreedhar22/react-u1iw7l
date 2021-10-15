@@ -1,4 +1,4 @@
-import ArticleList from "../ArticleList";
+import ArticleContainer from "../ArticleContainer";
 import React from "react";
 import { connect } from "react-redux";
 import SearchFilter from "../SearchFilter";
@@ -27,7 +27,7 @@ class MainView extends React.Component {
               </li>
             </ul>
           </div>
-          <ArticleList articles={this.articles} />
+          <ArticleContainer articles={this.articles} />
         </div>
 
         <div className="row">
